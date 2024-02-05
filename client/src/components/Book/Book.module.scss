@@ -35,5 +35,11 @@
     cursor: pointer;
     font-weight: 600;
     width: calc(25% - 8px);
+    border-radius: 5px;
+    background: #efefef;
+
+    &:hover {
+      background: #d0d0d0;
+    }
   }
 }
