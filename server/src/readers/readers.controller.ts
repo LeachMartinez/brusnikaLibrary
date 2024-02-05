@@ -1,6 +1,6 @@
-import { Controller, Get, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, Patch, Post } from '@nestjs/common';
 import { Reader } from 'src/db/Entities/reader.entity';
-import { ReadersService } from 'src/services/readers.service';
+import { ReadersService } from 'src/readers/readers.service';
 
 @Controller()
 export class ReadersController {
@@ -17,8 +17,8 @@ export class ReadersController {
   }
 
   @Post('/reader')
-  createReader() {
-    return '';
+  createReader(@Body() reader: { name: string }) {
+    return this.readerService.createReader(reader);
   }
 
   @Patch('/reader/:id')

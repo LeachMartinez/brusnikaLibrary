@@ -1,23 +1,24 @@
-import { InjectRepository } from '@nestjs/typeorm';
+import { Inject, Injectable } from '@nestjs/common';
 import { Reader } from 'src/db/Entities/reader.entity';
 import { Repository } from 'typeorm';
 
+@Injectable()
 export class ReadersService {
   constructor(
-    @InjectRepository(Reader)
+    @Inject('READER_REPOSITORY')
     private readersRepository: Repository<Reader>,
   ) {}
 
-  getReaders(): Promise<Reader[]> {
-    return this.readersRepository.find({
+  async getReaders(): Promise<Reader[]> {
+    return await this.readersRepository.find({
       relations: {
         books: true,
       },
     });
   }
 
-  createReader(readerParams: { name: string }) {
-    const reader = this.readersRepository.create({
+  async createReader(readerParams: { name: string }) {
+    const reader = await this.readersRepository.save({
       name: readerParams.name,
     });
 

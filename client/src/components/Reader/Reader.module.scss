@@ -1,0 +1,49 @@
+.reader {
+  &__container {
+    width: 50%;
+    box-shadow: 0px 2px 8px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+    padding: 16px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__list {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex-basis: 100%;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    justify-self: end;
+    margin-top: 16px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 16px;
+    cursor: pointer;
+    font-weight: 600;
+    width: calc(25% - 8px);
+    border-radius: 5px;
+    background: #efefef;
+
+    &:hover {
+      background: #d0d0d0;
+    }
+  }
+}

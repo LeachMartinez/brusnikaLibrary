@@ -1,6 +1,6 @@
-import { Controller, Get, Patch, Post } from '@nestjs/common';
+import { Body, Controller, Get, Patch, Post } from '@nestjs/common';
 import { Book } from 'src/db/Entities/book.entity';
-import { BooksService } from 'src/services/books.service';
+import { BooksService } from 'src/books/books.service';
 
 @Controller()
 export class BooksController {
@@ -17,8 +17,10 @@ export class BooksController {
   }
 
   @Post('/book')
-  createBook() {
-    return '';
+  createBook(
+    @Body() book: { author: string; description: string; name: string },
+  ) {
+    return this.bookService.createBook(book);
   }
 
   @Patch('/book/:id')

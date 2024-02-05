@@ -1,0 +1,22 @@
+.library {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 24px;
+
+  &__elements {
+    display: flex;
+    margin-top: 16px;
+    gap: 16px;
+  }
+
+  &__container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    background: #f0f2f5;
+  }
+}
