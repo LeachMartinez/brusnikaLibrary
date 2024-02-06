@@ -70,11 +70,17 @@ export class BooksService {
       })),
     });
 
+    const books = [...reader.books, ...addedBooks];
     Object.assign(reader, {
-      books: [...reader.books, ...addedBooks],
       ...reader,
+      books,
     });
-
     return this.readersRepository.save(reader);
+  }
+
+  async refundBook(bookId) {
+    await this.booksRepository.remove(
+      await this.booksRepository.findOne({ where: { id: bookId } }),
+    );
   }
 }

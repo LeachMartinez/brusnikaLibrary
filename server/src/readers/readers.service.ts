@@ -30,10 +30,18 @@ export class ReadersService {
   }
 
   async removeReader(id: number) {
-    this.readersRepository.remove(
-      await this.readersRepository.find({
-        where: { id },
-      }),
-    );
+    let reader = await this.readersRepository.findOne({
+      relations: {
+        books: true,
+      },
+      where: { id },
+    });
+
+    reader = await this.readersRepository.save({
+      ...reader,
+      books: null,
+    });
+
+    await this.readersRepository.remove(reader);
   }
 }

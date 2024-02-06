@@ -15,6 +15,7 @@ export default function ShowReader({ reader, setModal }: TReaderShow) {
       await axios.delete(`${config.api_url}/reader/${reader.id}`);
       setModal(() => initialModalState);
       queryClient.refetchQueries(["readers"]);
+      queryClient.refetchQueries(["books"]);
     } catch (error) {
       console.log(error);
       alert("Что-то пошло не так")
@@ -40,7 +41,7 @@ export default function ShowReader({ reader, setModal }: TReaderShow) {
               <div key={book.id}>
                 <h3>{book.name}</h3>
                 <span>{book.author}</span>
-                <Button>Удалить</Button>
+                <Button>Вернуть</Button>
               </div>
             ))
           }

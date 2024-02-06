@@ -27,6 +27,7 @@ export default function ReaderCreate(props: TReaderCreate) {
       });
 
       queryClient.refetchQueries(["readers"])
+      queryClient.refetchQueries(["books"])
       props.setModal(() => initialModalState);
     } catch (error) {
       console.log(error); 
