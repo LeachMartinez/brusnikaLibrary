@@ -55,7 +55,7 @@ export default function ReaderList({ setModal }: TReaderList) {
         <span>Всего: {readers.length}</span>
       </div>
       <div className={styles.reader__list}>
-        {readers.map((reader) => <ReaderItem reader={reader} setModal={setModal} />)}
+        {readers.map((reader) => <ReaderItem reader={reader} setModal={setModal} key={reader.id}/>)}
       </div>
       <div className={styles.reader__buttons}>
         <Button onClick={showReaderModal}>Добавить читателя</Button>

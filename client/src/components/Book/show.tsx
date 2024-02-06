@@ -15,6 +15,7 @@ export default function ShowBook({ book, setModal}: TShowBook) {
       await axios.delete(`${config.api_url}/book/${book.id}`);
       setModal(() => initialModalState);
       queryClient.refetchQueries(["books"]);
+      queryClient.refetchQueries(["readers"]);
     } catch (error) {
       console.log(error);
       alert("Что-то пошло не так")

@@ -65,7 +65,7 @@ export function BookList({ setModal }: TBookList) {
       </div>
       <div className={styles.books__list}>
         {
-          books.map((book) => <BookItem book={book} setModal={setModal}/>)
+          books.map((book) => <BookItem book={book} setModal={setModal} key={book.id}/>)
         }
       </div>
       <div className={styles.books__buttons}>

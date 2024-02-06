@@ -45,6 +45,7 @@
     background: #efefef;
     height: 42px;
     flex-direction: column;
+    transition: 0.3s ease-in-out all;
 
     &__reader {
       font-size: 8px;
