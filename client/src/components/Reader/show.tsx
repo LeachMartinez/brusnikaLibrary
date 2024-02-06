@@ -26,7 +26,7 @@ export default function ShowReader({ reader, setModal }: TReaderShow) {
       content: <ReaderCreate setModal={setModal} reader={reader} />
     }));
   }
-
+  
   return (
     <Modal onClose={() => setModal(() => initialModalState)}>
       <div>

@@ -29,9 +29,9 @@ export class ReadersController {
     return this.readerService.createReader(reader);
   }
 
-  @Patch('/reader/:id')
-  editReader() {
-    return '';
+  @Patch('/reader')
+  editReader(@Body() reader: { id: number; name?: string }) {
+    return this.readerService.editReader(reader);
   }
 
   @Delete('reader/:id')

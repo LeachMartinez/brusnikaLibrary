@@ -56,19 +56,19 @@ export class BooksService {
     );
   }
 
-  async addReader(params: { bookIds: number[]; readerId: number }) {
+  async addReader(params: { booksIds: number[]; readerId: number }) {
     const reader = await this.readersRepository.findOne({
       where: { id: params.readerId },
     });
 
     const addedBooks = await this.booksRepository.find({
-      where: params.bookIds.map((id) => ({
+      where: params.booksIds.map((id) => ({
         id,
       })),
     });
 
-    return this.readersRepository.update(reader, {
-      books: [...reader.books, ...addedBooks],
-    });
+    Object.assign(reader, { books: [...addedBooks], ...reader });
+
+    return this.readersRepository.save(reader);
   }
 }

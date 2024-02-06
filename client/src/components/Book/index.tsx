@@ -20,11 +20,12 @@ function BookItem({ setModal, book }: TBookItem) {
   }
 
   return (
-    <div className={styles.books__item} key={book.id} onClick={showBookModal}>
+    <div className={[styles.books__item, book.readerId ? styles.required : ""].join(" ")} key={book.id} onClick={showBookModal}>
       {book.name}
     </div>
   )
 }
+
 export function BookList({ setModal }: TBookList) {
   const { isLoading, data } = useQuery( 'books', () => { return axios.get(`${config.api_url}/books`) }, {
     refetchOnWindowFocus: false,

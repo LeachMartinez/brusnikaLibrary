@@ -45,6 +45,10 @@
     background: #efefef;
     height: 42px;
 
+    &.required {
+      background: rgb(228, 149, 149);
+    }
+
     &:hover {
       background: #d0d0d0;
     }

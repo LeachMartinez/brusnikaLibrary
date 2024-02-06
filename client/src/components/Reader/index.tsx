@@ -40,7 +40,7 @@ export default function ReaderList({ setModal }: TReaderList) {
   const readers = data?.data as TReader[];
 
   function showReaderModal() {
-    setModal(modalParams => ({
+    setModal(() => ({
       open: true,
       content: <ReaderCreate
         setModal={setModal}

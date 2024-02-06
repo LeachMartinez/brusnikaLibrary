@@ -3,7 +3,7 @@ import {
   CreateDateColumn,
   Entity,
   JoinTable,
-  ManyToMany,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
@@ -23,7 +23,11 @@ export class Reader {
   @UpdateDateColumn()
   updated_at: Date;
 
-  @ManyToMany(() => Book)
+  @OneToMany(() => Book, (book) => book.reader, {
+    cascade: true,
+    onDelete: 'DEFAULT',
+    onUpdate: 'CASCADE',
+  })
   @JoinTable()
   books: Book[];
 }

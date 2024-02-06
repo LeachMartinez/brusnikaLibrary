@@ -43,4 +43,9 @@ export class BooksController {
   deleteBook(@Param('id') id: string) {
     return this.bookService.removeBook(Number(id));
   }
+
+  @Post('/take_book')
+  takeBook(@Body() body: { booksIds: number[]; readerId: number }) {
+    return this.bookService.addReader(body);
+  }
 }
