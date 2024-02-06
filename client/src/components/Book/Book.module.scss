@@ -44,11 +44,21 @@
     border-radius: 5px;
     background: #efefef;
     height: 42px;
+    flex-direction: column;
 
-    &.required {
-      background: rgb(228, 149, 149);
+    &__reader {
+      font-size: 8px;
+      font-weight: 300;
     }
 
+    &.required {
+      background: rgb(255, 224, 224);
+    }
+
+    &.free {
+      background: rgb(216, 239, 182);
+    }
+    
     &:hover {
       background: #d0d0d0;
     }

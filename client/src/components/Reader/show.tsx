@@ -17,6 +17,7 @@ export default function ShowReader({ reader, setModal }: TReaderShow) {
       queryClient.refetchQueries(["readers"]);
     } catch (error) {
       console.log(error);
+      alert("Что-то пошло не так")
     }
   }
 

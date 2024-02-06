@@ -11,7 +11,7 @@ import { useQuery, useQueryClient } from "react-query";
 
 export default function TakeBook({ setModal, books }: { books: TBook[], setModal: TSetModal}) {
   const queryClient = useQueryClient();
-  const { isLoading, data } = useQuery( 'readers', () => { return axios.get(`${config.api_url}/readers`) }, {
+  const { isLoading, data } = useQuery( 'takeReaders', () => { return axios.get(`${config.api_url}/readers`) }, {
     refetchOnWindowFocus: false,
   });
   
@@ -30,16 +30,19 @@ export default function TakeBook({ setModal, books }: { books: TBook[], setModal
           booksIds = Array.from(bookSelect.selectedOptions).flatMap((selectedOption: HTMLOptionElement) => Number(selectedOption.value)),
           reader = Number(readerSelect.selectedOptions[0].value);
 
-    if (booksIds.length < 1 || !reader) return;
+    if (booksIds.length < 1 || !reader) return alert("Произошла ошибка при взятии книги");
 
     try {
       await axios.post(`${config.api_url}/take_book`, {
         booksIds,
         readerId: reader
       })
-      queryClient.refetchQueries(["books", "raeders"])
+      queryClient.refetchQueries(["books"])
+      queryClient.refetchQueries(["readers"])
+      setModal(() => initialModalState)
     } catch (error) {
       console.log(error);
+      alert("Что-то пошло не так")
     }
   }
 

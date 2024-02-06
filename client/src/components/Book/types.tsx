@@ -1,4 +1,4 @@
-import { TSetModal } from "../Reader/types";
+import { TReader, TSetModal } from "../Reader/types";
 
 export type TBookCreate = {
   book?: TBook;
@@ -9,7 +9,7 @@ export type TBook = {
   author: string;
   description?: string;
   name: string;
-  readerId?: number;
+  reader?: TReader;
 }
 
 export type TBookList = {

@@ -30,6 +30,7 @@ export default function ReaderCreate(props: TReaderCreate) {
       props.setModal(() => initialModalState);
     } catch (error) {
       console.log(error); 
+      alert("Что-то пошло не так")
     }
   }
 

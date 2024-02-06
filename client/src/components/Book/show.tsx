@@ -17,6 +17,7 @@ export default function ShowBook({ book, setModal}: TShowBook) {
       queryClient.refetchQueries(["books"]);
     } catch (error) {
       console.log(error);
+      alert("Что-то пошло не так")
     }
   }
 
@@ -35,7 +36,7 @@ export default function ShowBook({ book, setModal}: TShowBook) {
           <h3>Название: {book.name}</h3>
           <h4>Автор: {book.author}</h4>
           <p>Описание: {book.description}</p>
-          <span>Читатель: {book.readerId}</span>
+          <span>Читатель: {book.reader?.name}</span>
         </div>
         <div>
           <Button onClick={editBook}>Редактировать</Button>

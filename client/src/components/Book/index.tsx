@@ -20,8 +20,9 @@ function BookItem({ setModal, book }: TBookItem) {
   }
 
   return (
-    <div className={[styles.books__item, book.readerId ? styles.required : ""].join(" ")} key={book.id} onClick={showBookModal}>
+    <div className={[styles.books__item, book.reader ? styles.required : styles.free].join(" ")} key={book.id} onClick={showBookModal}>
       {book.name}
+      { book.reader && <span className={styles.books__item__reader}>Читатель: {book.reader.name}</span>}
     </div>
   )
 }
@@ -51,7 +52,7 @@ export function BookList({ setModal }: TBookList) {
       open: true,
       content: <TakeBook
         setModal={setModal}
-        books={books}
+        books={books.filter(book => !book.reader)}
       />
     }))
   }

@@ -35,6 +35,7 @@ export default function BookCreate(props: TBookCreate) {
       props.setModal(() => initialModalState);
     } catch (error) {
       console.log(error);
+      alert("Что-то пошло не так")
     }
   }
 
