@@ -29,14 +29,10 @@ export class ReadersService {
     this.readersRepository.update({ id: readerParams.id }, readerParams);
   }
 
-  async removeReader(
-    readerParams: {
-      id: number;
-    }[],
-  ) {
+  async removeReader(id: number) {
     this.readersRepository.remove(
       await this.readersRepository.find({
-        where: readerParams,
+        where: { id },
       }),
     );
   }

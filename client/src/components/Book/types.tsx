@@ -1,8 +1,8 @@
+import { TSetModal } from "../Reader/types";
+
 export type TBookCreate = {
-  setModal: React.Dispatch<React.SetStateAction<{
-    open: boolean;
-    content: JSX.Element | null;
-  }>>
+  book?: TBook;
+  setModal: TSetModal;
 }
 export type TBook = {
   id?: number;
@@ -13,8 +13,12 @@ export type TBook = {
 }
 
 export type TBookList = {
-  setModal: React.Dispatch<React.SetStateAction<{
-    open: boolean;
-    content: JSX.Element | null;
-  }>>
+  setModal: TSetModal
 }
+
+export type TBookItem = {
+  book: TBook,
+  setModal: TSetModal
+}
+export type TShowBook = TBookItem
+

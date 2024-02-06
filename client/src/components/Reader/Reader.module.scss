@@ -41,9 +41,50 @@
     width: calc(25% - 8px);
     border-radius: 5px;
     background: #efefef;
+    height: 42px;
 
     &:hover {
       background: #d0d0d0;
+    }
+  }
+
+  &__create {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+
+    &__input {
+      &__wrapper {
+        margin-top: 8px;
+        flex-direction: column;
+        justify-content: center;
+        display: flex;
+        gap: 4px;
+      }
+
+      &__name {
+        font-size: 14px;
+        font-weight: 500;
+      }
+
+      &__input {
+        border: 1px solid #aeaeae;
+        border-radius: 5px;
+        padding: 8px 16px;
+        font-size: 16px;
+      }
+    }
+
+    &__button {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__title {
+      display: flex;
+      justify-content: center;
     }
   }
 }

@@ -5,6 +5,9 @@ import { initialModalState } from "../Library";
 import { TReaderCreate } from "./types";
 import { useQueryClient } from "react-query";
 import Modal from "../../ui/Modal";
+import Button from "../../ui/Button";
+import Input from "../../ui/Input";
+import styles from "./Reader.module.scss";
 
 export default function ReaderCreate(props: TReaderCreate) {
   const queryClient = useQueryClient();
@@ -18,7 +21,8 @@ export default function ReaderCreate(props: TReaderCreate) {
       if (!readerName) return;
   
       try {
-        await axios.post(`${config.api_url}/reader`, {
+        const method = props.reader ? "patch" : "post"
+        await axios[method](`${config.api_url}/reader`, {
           name: readerName,
         });
   
@@ -32,8 +36,15 @@ export default function ReaderCreate(props: TReaderCreate) {
   return (
     <Modal onClose={() => {props.setModal(() => initialModalState)}}>
       <form onSubmit={handleSubmitCreateReader}>
-        Имя <input type="text" name="readerName"/>
-        <button>Добавить читателя</button>
+      <h2 className={styles.reader__create__title}> {props.reader ? "Редактировние" : "Создание"} читателя</h2>
+         
+        <div className={styles.reader__create__input__wrapper}>
+          <span className={styles.reader__create__input__name}>Имя</span>
+          <Input type="text" defaultValue={props.reader && props.reader.name} name="readerName"/>
+        </div>
+        <div className={styles.reader__create__button}>
+          <Button>Добавить читателя</Button>
+        </div>
       </form>
     </Modal>
   )

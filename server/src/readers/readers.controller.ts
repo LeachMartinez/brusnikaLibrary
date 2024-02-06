@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Patch, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 import { Reader } from 'src/db/Entities/reader.entity';
 import { ReadersService } from 'src/readers/readers.service';
 
@@ -24,5 +32,10 @@ export class ReadersController {
   @Patch('/reader/:id')
   editReader() {
     return '';
+  }
+
+  @Delete('reader/:id')
+  deleteBook(@Param('id') id: string) {
+    return this.readerService.removeReader(Number(id));
   }
 }

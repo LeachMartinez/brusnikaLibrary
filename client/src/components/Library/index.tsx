@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom"
 import { useState } from "react"
-import { BookList } from "../Book/list"
-import ReaderList from "../Reader/list"
+import { BookList } from "../Book"
+import ReaderList from "../Reader"
 import styles from "./Library.module.scss";
 
 export const initialModalState : {

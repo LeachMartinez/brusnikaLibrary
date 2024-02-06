@@ -2,15 +2,32 @@ import ReaderCreate from "./create";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { config } from "../../config";
-import { TReader } from "./types";
+import { TReader, TReaderItem, TReaderList } from "./types";
 import styles from "./Reader.module.scss";
+import Button from "../../ui/Button";
+import ShowReader from "./show";
 
-type TReaderList = {
-  setModal: React.Dispatch<React.SetStateAction<{
-    open: boolean;
-    content: JSX.Element | null;
-  }>>
+
+
+function ReaderItem ({ reader, setModal }: TReaderItem) {
+  function showReaderModal() {
+    setModal(() => ({
+      open: true,
+      content: <ShowReader
+        reader={reader}
+        setModal={setModal}
+      />
+    }))
+  }
+
+  return (
+    <div className={styles.reader__item} onClick={showReaderModal}>
+      {reader.name}
+    </div>)
 }
+
+
+
 export default function ReaderList({ setModal }: TReaderList) {
   const { isLoading, data } = useQuery( 'readers', () => { return axios.get(`${config.api_url}/readers`) }, {
     refetchOnWindowFocus: false,
@@ -38,10 +55,10 @@ export default function ReaderList({ setModal }: TReaderList) {
         <span>Всего: {readers.length}</span>
       </div>
       <div className={styles.reader__list}>
-        {readers.map((reader) => <div className={styles.reader__item} key={reader.id}>{reader.name}</div>)}
+        {readers.map((reader) => <ReaderItem reader={reader} setModal={setModal} />)}
       </div>
       <div className={styles.reader__buttons}>
-        <button onClick={showReaderModal}>Добавить читателя</button>
+        <Button onClick={showReaderModal}>Добавить читателя</Button>
       </div>
     </div>
   )

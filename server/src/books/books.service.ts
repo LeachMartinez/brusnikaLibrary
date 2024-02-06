@@ -48,14 +48,10 @@ export class BooksService {
     return book;
   }
 
-  async removeBook(
-    bookParams: {
-      id: number;
-    }[],
-  ) {
-    this.booksRepository.remove(
+  async removeBook(id: number) {
+    return await this.booksRepository.remove(
       await this.booksRepository.find({
-        where: bookParams,
+        where: { id },
       }),
     );
   }

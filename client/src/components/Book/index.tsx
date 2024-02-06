@@ -1,12 +1,75 @@
-export default function Book() {
+import BookCreate from "./create";
+import { useQuery } from "react-query";
+import axios from "axios";
+import { config } from "../../config";
+import { TBook, TBookItem, type TBookList } from "./types";
+import styles from "./Book.module.scss";
+import Button from "../../ui/Button";
+import ShowBook from "./show";
+import TakeBook from "./take";
+
+function BookItem({ setModal, book }: TBookItem) {
+  function showBookModal() {
+    setModal(() => ({
+      open: true,
+      content: <ShowBook
+        book={book}
+        setModal={setModal}
+      />
+    }))
+  }
+
   return (
-    <div>
-      <h2>Книга</h2>
-      <h3>Название</h3>
-      <p>Описание</p>
-      <span>Читатель:</span>
-      <button>Редактировать</button>
-      <button>удалить книгу</button>
+    <div className={styles.books__item} key={book.id} onClick={showBookModal}>
+      {book.name}
+    </div>
+  )
+}
+export function BookList({ setModal }: TBookList) {
+  const { isLoading, data } = useQuery( 'books', () => { return axios.get(`${config.api_url}/books`) }, {
+    refetchOnWindowFocus: false,
+  });
+
+  if (isLoading) {
+    return <span>Загрузка...</span>;
+  }
+
+  const books = data?.data as TBook[];
+
+  function showBookModal() {   
+    setModal(() => ({
+      open: true,
+      content: <BookCreate
+        setModal={setModal}
+      />
+    }))
+  }
+
+  function takeBooks() {
+    setModal(() => ({
+      open: true,
+      content: <TakeBook
+        setModal={setModal}
+        books={books}
+      />
+    }))
+  }
+
+  return (
+    <div className={styles.books__container}>
+      <div className={styles.books__info}>
+        <span>Книги</span>
+        <span>Всего: {data?.data.length}</span>
+      </div>
+      <div className={styles.books__list}>
+        {
+          books.map((book) => <BookItem book={book} setModal={setModal}/>)
+        }
+      </div>
+      <div className={styles.books__buttons}>
+        <Button onClick={showBookModal}>Добавить Книгу</Button>
+        <Button onClick={takeBooks}>Взять Книги</Button>
+      </div>
     </div>
   )
 }
