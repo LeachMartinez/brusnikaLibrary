@@ -61,7 +61,7 @@ export function BookList({ setModal }: TBookList) {
     <div className={styles.books__container}>
       <div className={styles.books__info}>
         <span>Книги</span>
-        <span>Всего: {data?.data.length}</span>
+        <span>Всего: {books.length}</span>
       </div>
       <div className={styles.books__list}>
         {
