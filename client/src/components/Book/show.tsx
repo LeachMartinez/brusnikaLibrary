@@ -6,6 +6,7 @@ import { TShowBook } from "./types";
 import { config } from "../../config";
 import { useQueryClient } from "react-query";
 import BookCreate from "./create";
+import styles from "./Book.module.scss";
 
 export default function ShowBook({ book, setModal}: TShowBook) {
   const queryClient = useQueryClient();
@@ -32,14 +33,26 @@ export default function ShowBook({ book, setModal}: TShowBook) {
   return (
     <Modal onClose={() => setModal(() => initialModalState)}>
       <div>
-        <div>
-          <h2>Информация о книге</h2>
-          <h3>Название: {book.name}</h3>
-          <h4>Автор: {book.author}</h4>
-          <p>Описание: {book.description}</p>
-          <span>Читатель: {book.reader?.name}</span>
+        <div className={styles.books__show__wrapper}>
+          <h2 className={styles.books__show__title}>Информация о книге</h2>
+          <div className={styles.books__show__info}>
+            <span>Название:</span>
+            <span>{book.name}</span>
+          </div>
+          <div className={styles.books__show__info}>
+            <span>Автор:</span>
+            <span>{book.author}</span>
+          </div>
+          <div className={styles.books__show__info}>
+            <span>Описание:</span>
+            <span>{book.description}</span>
+          </div>
+          <div className={styles.books__show__info}>
+            <span>Читатель:</span>
+            <span>{book.reader?.name}</span>
+          </div>
         </div>
-        <div>
+        <div className={styles.books__buttons}>
           <Button onClick={editBook}>Редактировать</Button>
           <Button onClick={deleteBook}>удалить книгу</Button>
         </div>

@@ -78,9 +78,13 @@ export class BooksService {
     return this.readersRepository.save(reader);
   }
 
-  async refundBook(bookId) {
-    await this.booksRepository.remove(
-      await this.booksRepository.findOne({ where: { id: bookId } }),
-    );
+  async refundBook(bookId: number) {
+    const book = await this.booksRepository.findOne({ where: { id: bookId } });
+
+    Object.assign(book, {
+      ...book,
+      reader: null,
+    });
+    return await this.booksRepository.save(book);
   }
 }

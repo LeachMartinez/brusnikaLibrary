@@ -20,9 +20,20 @@ function BookItem({ setModal, book }: TBookItem) {
   }
 
   return (
-    <div className={[styles.books__item, book.reader ? styles.required : styles.free].join(" ")} key={book.id} onClick={showBookModal}>
+    <div 
+      key={book.id}
+      onClick={showBookModal}
+      className={[
+        styles.books__item,
+        book.reader ? styles.required : styles.free
+      ].join(" ")}
+    >
       {book.name}
-      { book.reader && <span className={styles.books__item__reader}>Читатель: {book.reader.name}</span>}
+      {book.reader && 
+        <span className={styles.books__item__reader}>
+          Читатель: {book.reader.name}
+        </span>
+      }
     </div>
   )
 }

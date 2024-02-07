@@ -103,4 +103,15 @@
       justify-content: center;
     }
   }
+
+  &__show {
+    &__title {
+      margin-bottom: 12px;
+    }
+
+    &__info {
+      display: flex;
+      gap: 8px;
+    }
+  }
 }

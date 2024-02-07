@@ -48,4 +48,9 @@ export class BooksController {
   takeBook(@Body() body: { booksIds: number[]; readerId: number }) {
     return this.bookService.addReader(body);
   }
+
+  @Post('refund/:id')
+  refund(@Param('id') id: string) {
+    return this.bookService.refundBook(Number(id));
+  }
 }

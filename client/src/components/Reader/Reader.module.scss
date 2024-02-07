@@ -87,4 +87,42 @@
       justify-content: center;
     }
   }
+
+  &__show {
+    &__title {
+      margin-bottom: 12px;
+    }
+
+    &__info {
+      display: flex;
+      gap: 8px;
+    }
+
+    &__book {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      margin-top: 8px;
+      gap: 8px;
+      padding: 8px 12px;
+      background: #e8e8e8;
+      border-radius: 10px;
+      
+      &__info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      &__wrapper {
+        max-height: 200px;
+        overflow: auto;
+      }
+
+      &__status {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+  }
 }
