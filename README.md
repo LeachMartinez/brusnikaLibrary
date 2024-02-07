@@ -25,16 +25,25 @@
 Верися NodeJS: 20.0.0
 
 `cd client`
+
 `npm i`
+
 `npm run start`
+
+Клиентская часть по умолчанию запускается на 3000 порту
+Адрес: http://localhost:3000
 
 ## Серверная часть
 Верися NodeJS: 20.0.0
 База данных: Postgresql
 ORM: TypeOrm
 
-***Создать в Postgresql базу данных library_development ***
+**Создать в Postgresql базу данных library_development **
 
 `cd server`
+
 `npm i`
+
 `npm run start:dev`
+
+Серверная часть запускается на порту 3030
