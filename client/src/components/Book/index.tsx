@@ -1,12 +1,12 @@
-import BookCreate from "./create";
+import BookCreate from "./Сreate";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { config } from "../../config";
 import { TBook, TBookItem, type TBookList } from "./types";
 import styles from "./Book.module.scss";
 import Button from "../../ui/Button";
-import ShowBook from "./show";
-import TakeBook from "./take";
+import ShowBook from "./Show";
+import TakeBook from "./Take";
 
 function BookItem({ setModal, book }: TBookItem) {
   function showBookModal() {

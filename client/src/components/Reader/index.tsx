@@ -1,13 +1,11 @@
-import ReaderCreate from "./create";
+import ReaderCreate from "./Create";
 import { useQuery } from "react-query";
 import axios from "axios";
 import { config } from "../../config";
 import { TReader, TReaderItem, TReaderList } from "./types";
 import styles from "./Reader.module.scss";
 import Button from "../../ui/Button";
-import ShowReader from "./show";
-
-
+import ShowReader from "./Show";
 
 function ReaderItem ({ reader, setModal }: TReaderItem) {
   function showReaderModal() {

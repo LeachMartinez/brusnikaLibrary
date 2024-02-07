@@ -19,3 +19,22 @@
 - API должно быть описано с использованием swagger;
 Реализовано:
 - Все остальное
+
+# Запуск
+## Клиентская часть
+Верися NodeJS: 20.0.0
+
+`cd client`
+`npm i`
+`npm run start`
+
+## Серверная часть
+Верися NodeJS: 20.0.0
+База данных: Postgresql
+ORM: TypeOrm
+
+***Создать в Postgresql базу данных library_development ***
+
+`cd server`
+`npm i`
+`npm run start:dev`

@@ -5,7 +5,7 @@ import { initialModalState } from "../Library";
 import { TShowBook } from "./types";
 import { config } from "../../config";
 import { useQueryClient } from "react-query";
-import BookCreate from "./create";
+import BookCreate from "./Сreate";
 import styles from "./Book.module.scss";
 
 export default function ShowBook({ book, setModal}: TShowBook) {

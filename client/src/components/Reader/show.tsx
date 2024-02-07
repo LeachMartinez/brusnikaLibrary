@@ -5,7 +5,7 @@ import { initialModalState } from "../Library"
 import { TReaderShow } from "./types"
 import { config } from "../../config";
 import { useQueryClient } from "react-query";
-import ReaderCreate from "./create";
+import ReaderCreate from "./Create";
 import styles from "./Reader.module.scss";
 
 export default function ShowReader({ reader, setModal }: TReaderShow) {
