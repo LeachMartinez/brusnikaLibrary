@@ -27,6 +27,7 @@ function ReaderItem ({ reader, setModal }: TReaderItem) {
 
 
 export default function ReaderList({ setModal }: TReaderList) {
+  let readers: TReader[] = [];
   const { isLoading, data } = useQuery( 'readers', () => { return axios.get(`${config.api_url}/readers`) }, {
     refetchOnWindowFocus: false,
   });
@@ -35,7 +36,9 @@ export default function ReaderList({ setModal }: TReaderList) {
     return <span>Загрузка...</span>;
   }
 
-  const readers = data?.data as TReader[];
+  if (data) {
+    readers = data.data as TReader[];
+  }
 
   function showReaderModal() {
     setModal(() => ({

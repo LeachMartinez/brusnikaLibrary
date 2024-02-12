@@ -39,6 +39,7 @@ function BookItem({ setModal, book }: TBookItem) {
 }
 
 export function BookList({ setModal }: TBookList) {
+  let books: TBook[] = [];
   const { isLoading, data } = useQuery( 'books', () => { return axios.get(`${config.api_url}/books`) }, {
     refetchOnWindowFocus: false,
   });
@@ -47,7 +48,9 @@ export function BookList({ setModal }: TBookList) {
     return <span>Загрузка...</span>;
   }
 
-  const books = data?.data as TBook[];
+  if (data) {
+    books = data.data as TBook[];
+  }
 
   function showBookModal() {   
     setModal(() => ({
