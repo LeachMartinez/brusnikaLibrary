@@ -17,6 +17,7 @@
 
 Не реализовано:
 - API должно быть описано с использованием swagger;
+  
 Реализовано:
 - Все остальное
 
@@ -35,10 +36,12 @@
 
 ## Серверная часть
 Верися NodeJS: 20.0.0
+
 База данных: Postgresql
+
 ORM: TypeOrm
 
-**Создать в Postgresql базу данных library_development **
+*Создать в Postgresql базу данных library_development *
 
 `cd server`
 
